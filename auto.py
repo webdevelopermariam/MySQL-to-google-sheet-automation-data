@@ -11,16 +11,16 @@ logging.basicConfig(
 )
 
 
-HOST = "localhost"
-DATABASE ="auto"
-USER ="root"
-PASSWORD = "Mariamjebur2005"
+HOST = "your host"
+DATABASE ="your database name"
+USER ="your database user"
+PASSWORD = "your data base password"
 SCOPES = [
     'https://www.googleapis.com/auth/spreadsheets',
     'https://www.googleapis.com/auth/drive'
 ]
 
-Sheet_ID = "1N89A8z3H6LFBUOQQ_fm4p7TNt1C1ZiCL6cpRvupHBiE"
+Sheet_ID = "your sheet ID"
 
 def connect_to_db():
   try:
@@ -35,13 +35,13 @@ def connect_to_db():
 def connect_to_sheet():
     try:
         creds = Credentials.from_service_account_file(
-            "last.json",
+            "your json file name.json",
             scopes=SCOPES
         )
         client = gspread.authorize(creds)
         workbook = client.open_by_key(Sheet_ID)
         print(f"Worksheets available: {[ws.title for ws in workbook.worksheets()]}")
-        return workbook.worksheet("captins")
+        return workbook.worksheet("your sheet name")
     except Exception as err:
         print(f"Error connecting to Google Sheet: {err}")
         return None
